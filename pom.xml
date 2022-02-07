@@ -68,8 +68,8 @@
 
 	<modules>
 		<module>test-helper</module>
+		<module>emof</module>
 		<module>sample</module>
-<!--		<module>emof</module>-->
 		<module>daml</module>
 		<module>default-cdm-generators</module>
 		<module>typescript</module>

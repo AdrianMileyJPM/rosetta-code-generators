@@ -15,6 +15,7 @@ import com.regnosys.rosetta.generator.golang.GolangCodeGenerator;
 import com.regnosys.rosetta.generator.kotlin.KotlinCodeGenerator;
 import com.regnosys.rosetta.generator.scala.ScalaCodeGenerator;
 import com.regnosys.rosetta.generator.typescript.TypescriptCodeGenerator;
+import com.regnosys.rosetta.generator.emof.EmofModelGenerator ;
 
 public final class DefaultExternalGeneratorsProvider implements Provider<ExternalGenerators> {
 
@@ -38,6 +39,9 @@ public final class DefaultExternalGeneratorsProvider implements Provider<Externa
 	
 	@Inject
 	private KotlinCodeGenerator kotlinGenerator;
+
+	@Inject
+	private EmofModelGenerator emofGenerator;
 
 	@Override
 	public ExternalGenerators get() {

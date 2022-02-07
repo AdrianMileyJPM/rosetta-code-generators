@@ -38,4 +38,31 @@ public class Translator {
 		}
 		return "***Unmapped " + typeName ;
 	}
+
+	public static String mapToEnumTYpe ( RosettaEnumeration referencedType ) {
+		return IdentifierGenerator.fromTwoParts ( referencedType.getModel().getName() , referencedType.getName() ) ;
+	}
+
+	public static String mapToModelType ( Data referencedType ) {
+		return IdentifierGenerator.fromTwoParts ( referencedType.getModel().getName() , referencedType.getName() ) ;
+	}
+
+	public static String generateDatatypes() {
+		StringBuilder sb = new StringBuilder()
+			.append ( XmlHelper.typedTagBegin ( "packagedElement" , "Package" , false ) )
+			.append ( XmlHelper.addAttribute( "xmi:id" , RosettaDatatypeNamespace ))
+			.append ( XmlHelper.addAttribute( "name" , RosettaDatatypeNamespace))
+			.append ( XmlHelper.closeTag() ) ;
+
+		sb.append ( XmlHelper.addComment ( RosettaDatatypeNamespace , "Set of Rosetta Primitive Datatypes used in ISDA-CDM" )) ;
+
+		for ( String thisType : typeList ) {
+			sb.append ( XmlHelper.typedTagBegin ( "packagedElement" , "Datatype" , false ) )
+				.append ( XmlHelper.addAttribute ( "name" , thisType ))
+				.append ( XmlHelper.closeTag() ) ;
+		}
+
+		sb.append ( XmlHelper.endBlockTag ( "packagedElement")) ;
+		return sb.toString() ;
+	}
 }
