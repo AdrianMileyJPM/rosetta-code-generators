@@ -51,7 +51,7 @@ public final class DefaultExternalGeneratorsProvider implements Provider<Externa
 	private final class DefaultGenerators implements ExternalGenerators {
 
 		private List<ExternalGenerator> gens = Arrays.asList(damlGenerator, scalaGenerator, typescriptGenerator,
-				golangGenerator, csharp8Generator, csharp9Generator, kotlinGenerator);
+				golangGenerator, csharp8Generator, csharp9Generator, kotlinGenerator, emofGenerator);
 
 		@Override
 		public Iterator<ExternalGenerator> iterator() {
