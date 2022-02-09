@@ -1,7 +1,6 @@
 package com.regnosys.rosetta.generator.emof ;
 
-import com.google.inject.Inject ;
-import com.regnosys.rosetta.generator.emof.util.Translator;
+import com.regnosys.rosetta.generator.emof.util.DatatypeHelper;
 import com.regnosys.rosetta.generator.external.AbstractExternalGenerator ;
 import com.regnosys.rosetta.generator.java.RosettaJavaPackages ;
 import com.regnosys.rosetta.rosetta.RosettaModel ;
@@ -43,7 +42,7 @@ public class EmofModelGenerator extends AbstractExternalGenerator {
 
         generatedModelData.append( packageGenerator.generateListOfPackages( (List<RosettaModel>) models) ) ;
 
-        generatedModelData.append(Translator.generateDatatypes()) ;
+        generatedModelData.append(DatatypeHelper.generateDatatypes()) ;
         generatedModelData.append(XmlHelper.documentEnd()) ;
         result.put ( generatedModelData.toString() , version ) ;
         return result ;

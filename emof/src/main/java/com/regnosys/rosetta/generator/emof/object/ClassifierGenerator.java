@@ -2,7 +2,7 @@ package com.regnosys.rosetta.generator.emof.object ;
 
 import com.regnosys.rosetta.generator.emof.util.XmlHelper ;
 import com.regnosys.rosetta.generator.emof.util.IdentifierGenerator ;
-import com.regnosys.rosetta.generator.emof.util.Translator ;
+import com.regnosys.rosetta.generator.emof.util.DatatypeHelper;
 
 import com.regnosys.rosetta.rosetta.simple.Attribute ;
 import com.regnosys.rosetta.rosetta.simple.Data ;
@@ -76,8 +76,8 @@ public class ClassifierGenerator {
                 .append ( XmlHelper.addAttribute( "xmi:id" , thisElementId) )
                 .append ( XmlHelper.addAttribute( "name" , in.getName() ) ) ;
 
-        if ( Translator.isPrimitiveType( in.getType().getName() ) == true) {
-            sb.append(XmlHelper.addAttribute("type", Translator.mapToPrimitiveType(in.getType().getName())));
+        if ( DatatypeHelper.isPrimitiveType( in.getType().getName() ) == true) {
+            sb.append(XmlHelper.addAttribute("type", DatatypeHelper.mapToPrimitiveType(in.getType().getName())));
         } else {
             sb.append(XmlHelper.addAttribute("type"
                , IdentifierGenerator.fromTwoParts(

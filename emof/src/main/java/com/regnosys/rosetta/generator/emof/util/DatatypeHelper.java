@@ -7,7 +7,7 @@ import java.util.Arrays ;
 import java.util.List ;
 import java.util.Objects;
 
-public class Translator {
+public class DatatypeHelper {
 	
 	public static String RosettaDatatypeNamespace = "com.rosetta.datatypes" ;
 	public static List<String> typeList = Arrays.asList(
