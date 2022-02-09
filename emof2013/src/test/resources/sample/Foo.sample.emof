@@ -4,6 +4,10 @@
                   name="ISDA Common Domain Model" version="test">
         <packagedElement xmi:type="Package" xmi:id="com.rosetta.model" name="com.rosetta.model">
             <packagedElement xmi:type="Class" xmi:id="com.rosetta.model::Foo" name="Foo">
+                <ownedComment xmi:type="Comment" xmi:id="Comment::com.rosetta.model::Foo::Comment"
+                              body="A sample class">
+                    <annotatedElement xmi:idref="com.rosetta.model::Foo"/>
+                </ownedComment>
                 <ownedAttribute xmi:type="Property" xmi:id="com.rosetta.model::Foo::stringAttribute"
                                 name="stringAttribute" type="com.rosetta.datatypes::string">
                     <lowerValue xmi:type="LiteralInteger" value="1"/>
@@ -26,6 +30,10 @@
                 </ownedAttribute>
             </packagedElement>
             <packagedElement xmi:type="Class" xmi:id="com.rosetta.model::DataFoo" name="DataFoo">
+                <ownedComment xmi:type="Comment" xmi:id="Comment::com.rosetta.model::DataFoo::Comment"
+                              body="A sample data">
+                    <annotatedElement xmi:idref="com.rosetta.model::DataFoo"/>
+                </ownedComment>
                 <ownedAttribute xmi:type="Property" xmi:id="com.rosetta.model::DataFoo::stringAttribute"
                                 name="stringAttribute" type="com.rosetta.datatypes::string">
                     <lowerValue xmi:type="LiteralInteger" value="1"/>
@@ -43,6 +51,10 @@
                 </ownedAttribute>
             </packagedElement>
             <packagedElement xmi:type="Enumeration" xmi:id="com.rosetta.model::Bar" name="Bar">
+                <ownedComment xmi:type="Comment" xmi:id="Comment::com.rosetta.model::Bar::Comment"
+                              body="Specifies delivery methods for securities transactions. This coding-scheme defines the possible delivery methods for securities.">
+                    <annotatedElement xmi:idref="com.rosetta.model::Bar"/>
+                </ownedComment>
                 <ownedLiteral xmi:type="EnumerationLiteral" xmi:id="com.rosetta.model::Bar::AA" name="AA">
                 </ownedLiteral>
                 <ownedLiteral xmi:type="EnumerationLiteral" xmi:id="com.rosetta.model::Bar::BB" name="BB">
@@ -52,6 +64,10 @@
             </packagedElement>
         </packagedElement>
         <packagedElement xmi:type="Package" xmi:id="com.rosetta.datatypes" name="com.rosetta.datatypes">
+            <ownedComment xmi:type="Comment" xmi:id="Comment::com.rosetta.datatypes::Comment"
+                          body="Set of Rosetta Primitive Datatypes used in ISDA-CDM">
+                <annotatedElement xmi:idref="com.rosetta.datatypes"/>
+            </ownedComment>
             <packagedElement xmi:type="PrimitiveType" xmi:id="com.rosetta.datatypes::string" name="string"/>
             <packagedElement xmi:type="PrimitiveType" xmi:id="com.rosetta.datatypes::int" name="int"/>
             <packagedElement xmi:type="PrimitiveType" xmi:id="com.rosetta.datatypes::time" name="time"/>

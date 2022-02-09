@@ -1,7 +1,7 @@
-package com.regnosys.rosetta.generator.emof.object ;
+package com.regnosys.rosetta.generator.emof2013.object ;
 
-import com.regnosys.rosetta.generator.emof.util.XmlHelper ;
-import com.regnosys.rosetta.generator.emof.util.IdentifierGenerator ;
+import com.regnosys.rosetta.generator.emof2013.util.XmlHelper ;
+import com.regnosys.rosetta.generator.emof2013.util.IdentifierGenerator ;
 
 import com.regnosys.rosetta.rosetta.RosettaEnumeration ;
 import com.regnosys.rosetta.rosetta.RosettaEnumValue ;
@@ -33,7 +33,7 @@ class EnumGenerator {
     private String generateEnumeration ( RosettaEnumeration in ) {
         String thisElementId = IdentifierGenerator.fromTwoParts(in.getModel().getName(), in.getName()) ;
         StringBuilder sb = new StringBuilder()
-                .append ( XmlHelper.typedTagBegin( "ownedType" , "emof:Enumeration" , false))
+                .append ( XmlHelper.typedTagBegin( "packagedElement" , "Enumeration" , false))
                 .append ( XmlHelper.addAttribute( "xmi:id" , thisElementId) )
                 .append ( XmlHelper.addAttribute( "name" , in.getName() ) )
                 .append( XmlHelper.closeTag() ) ;
@@ -43,7 +43,7 @@ class EnumGenerator {
             sb.append ( generateEnumerationLiteral(thisEnumValue)) ;
         }
 
-        sb.append( XmlHelper.endBlockTag( "ownedType"))
+        sb.append( XmlHelper.endBlockTag( "packagedElement"))
             .append(XmlHelper.LINE_SEPARATOR) ;
         return sb.toString() ;
     }
@@ -51,7 +51,7 @@ class EnumGenerator {
     private String generateEnumerationLiteral( RosettaEnumValue in) {
         String thisElementId = IdentifierGenerator.fromThreeParts(in.getEnumeration().getModel().getName() , in.getEnumeration().getName() , in.getName()) ;
         StringBuilder sb = new StringBuilder()
-                .append ( XmlHelper.untypedTagBegin( "ownedLiteral" , false))
+                .append ( XmlHelper.typedTagBegin( "ownedLiteral" , "EnumerationLiteral" , false))
                 .append ( XmlHelper.addAttribute( "xmi:id" , thisElementId) )
                 .append ( XmlHelper.addAttribute( "name" , in.getName() ) )
 // ToDo:                .append ( XmlHelper.addAttribute( "literal" , in.getDisplay() ) )

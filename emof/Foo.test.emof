@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmlns:xmi="http://schema.omg.org/spec/XMI/2.1">
+<emof:Package xmlns:emof="http://schema.omg.org/spec/MOF/2.0/emof.xml" xmi:type="Package" xmi:id="ISDA Common Domain Model" name="ISDA Common Domain Model" version="test">
+<nestedPackage xmi:id="com.rosetta.model"  name="com.rosetta.model" >
+<ownedType xmi:type="emof:Class"  xmi:id="com.rosetta.model::Foo"  name="Foo" >
+<ownedComment xmi:type="Comment" xmi:id="Comment::com.rosetta.model::Foo::Comment" body="A sample class">
+<annotatedElement xmi:idref="com.rosetta.model::Foo"/>
+</ownedComment>
+<ownedAttribute xmi:id="com.rosetta.model::Foo::stringAttribute"  name="stringAttribute"  type="com.rosetta.datatypes::string"  lower="1"  upper="1" >
+</ownedAttribute><ownedAttribute xmi:id="com.rosetta.model::Foo::intAttribute"  name="intAttribute"  type="com.rosetta.datatypes::int"  lower="1"  upper="1" >
+</ownedAttribute><ownedAttribute xmi:id="com.rosetta.model::Foo::dataAttribute"  name="dataAttribute"  type="com.rosetta.model::DataFoo"  lower="0"  upper="1" >
+</ownedAttribute><ownedAttribute xmi:id="com.rosetta.model::Foo::multipleAttribute"  name="multipleAttribute"  type="com.rosetta.datatypes::string"  lower="1"  upper="*" >
+</ownedAttribute></ownedType><ownedType xmi:type="emof:Class"  xmi:id="com.rosetta.model::FooBar"  name="FooBar" >
+<superClass xmi:id="Generalization::com.rosetta.model::Foo::Generalization"  xmi:idref="com.rosetta.model::Foo" />
+<ownedAttribute xmi:id="com.rosetta.model::FooBar::dateAttribute"  name="dateAttribute"  type="com.rosetta.datatypes::date"  lower="0"  upper="1" >
+</ownedAttribute></ownedType><ownedType xmi:type="emof:Class"  xmi:id="com.rosetta.model::DataFoo"  name="DataFoo" >
+<ownedComment xmi:type="Comment" xmi:id="Comment::com.rosetta.model::DataFoo::Comment" body="A sample data">
+<annotatedElement xmi:idref="com.rosetta.model::DataFoo"/>
+</ownedComment>
+<ownedAttribute xmi:id="com.rosetta.model::DataFoo::stringAttribute"  name="stringAttribute"  type="com.rosetta.datatypes::string"  lower="1"  upper="1" >
+</ownedAttribute><ownedAttribute xmi:id="com.rosetta.model::DataFoo::intAttribute"  name="intAttribute"  type="com.rosetta.datatypes::int"  lower="0"  upper="1" >
+</ownedAttribute><ownedAttribute xmi:id="com.rosetta.model::DataFoo::multipleAttribute"  name="multipleAttribute"  type="com.rosetta.model::Foo"  lower="3"  upper="*" >
+</ownedAttribute></ownedType><ownedType xmi:type="emof:Enumeration"  xmi:id="com.rosetta.model::Bar"  name="Bar" >
+<ownedComment xmi:type="Comment" xmi:id="Comment::com.rosetta.model::Bar::Comment" body="Specifies delivery methods for securities transactions. This coding-scheme defines the possible delivery methods for securities.">
+<annotatedElement xmi:idref="com.rosetta.model::Bar"/>
+</ownedComment>
+<ownedLiteral xmi:id="com.rosetta.model::Bar::AA"  name="AA" >
+</ownedLiteral>
+<ownedLiteral xmi:id="com.rosetta.model::Bar::BB"  name="BB" >
+</ownedLiteral>
+<ownedLiteral xmi:id="com.rosetta.model::Bar::CC"  name="CC" >
+</ownedLiteral>
+</ownedType>
+</nestedPackage>
+<nestedPackage xmi:id="com.rosetta.datatypes"  name="com.rosetta.datatypes" >
+<ownedComment xmi:type="Comment" xmi:id="Comment::com.rosetta.datatypes::Comment" body="Set of Rosetta Primitive Datatypes used in ISDA-CDM">
+<annotatedElement xmi:idref="com.rosetta.datatypes"/>
+</ownedComment>
+<ownedType xmi:type="emof:PrimitiveType"  xmi:id="com.rosetta.datatypes::string"  name="string" />
+<ownedType xmi:type="emof:PrimitiveType"  xmi:id="com.rosetta.datatypes::int"  name="int" />
+<ownedType xmi:type="emof:PrimitiveType"  xmi:id="com.rosetta.datatypes::time"  name="time" />
+<ownedType xmi:type="emof:PrimitiveType"  xmi:id="com.rosetta.datatypes::date"  name="date" />
+<ownedType xmi:type="emof:PrimitiveType"  xmi:id="com.rosetta.datatypes::dateTime"  name="dateTime" />
+<ownedType xmi:type="emof:PrimitiveType"  xmi:id="com.rosetta.datatypes::zonedDateTime"  name="zonedDateTime" />
+<ownedType xmi:type="emof:PrimitiveType"  xmi:id="com.rosetta.datatypes::number"  name="number" />
+<ownedType xmi:type="emof:PrimitiveType"  xmi:id="com.rosetta.datatypes::boolean"  name="boolean" />
+</nestedPackage></emof:Package>
+</xmi:XMI>

@@ -1,8 +1,8 @@
-package com.regnosys.rosetta.generator.emof.object ;
+package com.regnosys.rosetta.generator.emof2013.object ;
 
-import com.regnosys.rosetta.generator.emof.util.XmlHelper ;
-import com.regnosys.rosetta.generator.emof.util.IdentifierGenerator ;
-import com.regnosys.rosetta.generator.emof.util.DatatypeHelper;
+import com.regnosys.rosetta.generator.emof2013.util.XmlHelper ;
+import com.regnosys.rosetta.generator.emof2013.util.IdentifierGenerator ;
+import com.regnosys.rosetta.generator.emof2013.util.DatatypeHelper;
 
 import com.regnosys.rosetta.rosetta.simple.Attribute ;
 import com.regnosys.rosetta.rosetta.simple.Data ;
@@ -34,28 +34,30 @@ public class ClassifierGenerator {
         String thisElementId = IdentifierGenerator.fromTwoParts(in.getModel().getName() , in.getName()) ;
 
         StringBuilder sb = new StringBuilder()
-                .append ( XmlHelper.typedTagBegin( "ownedType" , "emof:Class" , false))
+                .append ( XmlHelper.typedTagBegin( "packagedElement" , "Class" , false))
                 .append ( XmlHelper.addAttribute( "xmi:id" , thisElementId) )
                 .append ( XmlHelper.addAttribute( "name" , in.getName() ) )
                 .append( XmlHelper.closeTag() ) ;
-
         sb.append( XmlHelper.addComment( thisElementId , in.getDefinition())) ;
 
         if ( in.hasSuperType() == true ) {
-            String refClassId = IdentifierGenerator.fromTwoParts(in.getSuperType().getModel().getName(), in.getSuperType().getName() ) ;
-            String generalId = IdentifierGenerator.fromMetaPartName( refClassId, "Generalization") ;
-
-            sb.append( XmlHelper.untypedTagBegin( "superClass" , false) )
-                .append( XmlHelper.addAttribute( "xmi:id" , generalId))
-                .append( XmlHelper.addAttribute( "xmi:idref" , refClassId))
-                .append(XmlHelper.endTag()) ;
+            sb.append( "<generalization xmi:type=\"Generalization\"")
+                .append( XmlHelper.addAttribute( "xmi:id" , IdentifierGenerator.fromMetaPartName( thisElementId , "Generalization")))
+                .append( XmlHelper.addAttribute( "general"
+                            , IdentifierGenerator.fromTwoParts(
+                                    in.getSuperType().getModel().getName()
+                                , in.getSuperType().getName()
+                            )
+                        )
+                )
+                .append(XmlHelper.closeTag()) ;
         }
 
         for ( Attribute thisAttribute : in.getAttributes()) {
             sb.append( generateAttribute(thisAttribute , thisElementId )) ;
         }
 
-        sb.append( XmlHelper.endBlockTag( "ownedType")) ;
+        sb.append( XmlHelper.endBlockTag( "packagedElement")) ;
         return sb.toString() ;
     }
 
@@ -70,7 +72,7 @@ public class ClassifierGenerator {
 */
 
         StringBuilder sb = new StringBuilder()
-                .append ( XmlHelper.untypedTagBegin( "ownedAttribute" , false))
+                .append ( XmlHelper.typedTagBegin( "ownedAttribute" , "Property" , false))
                 .append ( XmlHelper.addAttribute( "xmi:id" , thisElementId) )
                 .append ( XmlHelper.addAttribute( "name" , in.getName() ) ) ;
 
@@ -84,17 +86,25 @@ public class ClassifierGenerator {
                )
             ) ) ;
         }
-
-        sb.append(XmlHelper.addAttribute("lower", String.valueOf(in.getCard().getInf()) )) ;
-
-        if ( in.getCard().isUnbounded() == true ) {
-            sb.append(XmlHelper.addAttribute("upper", "*"));
-        } else {
-            sb.append(XmlHelper.addAttribute("upper", String.valueOf(in.getCard().getSup()) )) ;
-        }
-
         sb.append(XmlHelper.closeTag()) ;
         sb.append( XmlHelper.addComment( thisElementId , in.getDefinition())) ;
+
+        sb.append( XmlHelper.typedTagBegin( "lowerValue" , "LiteralInteger" , false )) ;
+        if ( in.getCard().isIsOptional() == true ) {
+            sb.append(XmlHelper.addAttribute("value", "0"));
+        } else {
+            sb.append(XmlHelper.addAttribute("value", "1"));
+        }
+        sb.append(XmlHelper.endTag()) ;
+
+        sb.append( XmlHelper.typedTagBegin( "upperValue" , "LiteralUnlimitedNatural" , false )) ;
+        if ( in.getCard().isIsMany() == true ) {
+            sb.append(XmlHelper.addAttribute("value", "-1"));
+        } else {
+            sb.append(XmlHelper.addAttribute("value", "1"));
+        }
+        sb.append(XmlHelper.endTag()) ;
+
         sb.append( XmlHelper.endBlockTag( "ownedAttribute")) ;
         return sb.toString() ;
     }

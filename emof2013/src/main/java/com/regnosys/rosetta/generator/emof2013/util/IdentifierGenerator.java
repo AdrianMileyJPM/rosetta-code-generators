@@ -1,4 +1,4 @@
-package com.regnosys.rosetta.generator.emof.util ;
+package com.regnosys.rosetta.generator.emof2013.util ;
 
 public class IdentifierGenerator {
 	IdentifierGenerator() { /* do nothing */ }

@@ -69,6 +69,7 @@
 	<modules>
 		<module>test-helper</module>
 		<module>emof</module>
+		<module>emof2013</module>
 		<module>sample</module>
 		<module>daml</module>
 		<module>default-cdm-generators</module>

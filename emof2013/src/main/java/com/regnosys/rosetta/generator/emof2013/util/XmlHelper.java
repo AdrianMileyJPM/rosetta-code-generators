@@ -1,4 +1,4 @@
-package com.regnosys.rosetta.generator.emof.util ;
+package com.regnosys.rosetta.generator.emof2013.util ;
 
 import java.util.Objects;
 
@@ -13,9 +13,9 @@ public class XmlHelper {
         return new StringBuilder()
             .append ( "<?xml version=\"1.0\" encoding=\"UTF-8\"?>")
             .append ( LINE_SEPARATOR )
-            .append ( "<xmi:XMI xmlns:xmi=\"http://schema.omg.org/spec/XMI/2.1\">")
+            .append ( "<xmi:XMI xmlns:xmi=\"http://www.omg.org/spec/XMI/20131001\">")
             .append ( LINE_SEPARATOR )
-            .append ( "<emof:Package xmlns:emof=\"http://schema.omg.org/spec/MOF/2.0/emof.xml\"" )
+            .append ( "<emof:Package xmlns:emof=\"http://www.omg.org/spec/UML/20131001\"" )
                 .append ( " xmi:type=\"Package\"")
                 .append ( " xmi:id=\"" + IdentifierGenerator.fromOnePart(modelName) + "\"")
                 .append ( " name=\"" + modelName + "\"")

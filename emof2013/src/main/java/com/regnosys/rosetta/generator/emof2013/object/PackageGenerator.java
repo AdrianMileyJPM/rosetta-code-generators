@@ -1,12 +1,12 @@
-package com.regnosys.rosetta.generator.emof.object;
+package com.regnosys.rosetta.generator.emof2013.object;
 
 //  import com.regnosys.rosetta.rosetta.RosettaMetaType ;
 import com.regnosys.rosetta.rosetta.RosettaModel ;
 import com.regnosys.rosetta.rosetta.simple.Data ;
 import com.regnosys.rosetta.rosetta.RosettaEnumeration ;
 
-import com.regnosys.rosetta.generator.emof.util.XmlHelper ;
-import com.regnosys.rosetta.generator.emof.util.IdentifierGenerator ;
+import com.regnosys.rosetta.generator.emof2013.util.XmlHelper ;
+import com.regnosys.rosetta.generator.emof2013.util.IdentifierGenerator ;
 
 import java.util.List ;
 import java.util.HashMap ;
@@ -39,7 +39,7 @@ public class PackageGenerator {
     public String generatePackage ( RosettaModel elementIn ) {
         String thisElementId = IdentifierGenerator.fromOnePart(elementIn.getName()) ;
         StringBuilder sb = new StringBuilder()
-            .append ( XmlHelper.untypedTagBegin( "nestedPackage" , false))
+            .append ( XmlHelper.typedTagBegin( "packagedElement" , "Package" , false))
             .append ( XmlHelper.addAttribute( "xmi:id" , thisElementId) )
             .append ( XmlHelper.addAttribute( "name" , elementIn.getName() ) )
             .append( XmlHelper.closeTag() ) ;
@@ -61,7 +61,7 @@ public class PackageGenerator {
 
     /* ToDo : stand-alone functions */
 
-        sb.append ( XmlHelper.endBlockTag( "nestedPackage"))
+        sb.append ( XmlHelper.endBlockTag( "packagedElement"))
                 .append( XmlHelper.LINE_SEPARATOR) ;
         return sb.toString() ;
     }

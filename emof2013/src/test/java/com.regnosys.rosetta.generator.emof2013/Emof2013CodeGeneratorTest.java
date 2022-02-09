@@ -1,4 +1,4 @@
-package com.regnosys.rosetta.generator.emof;
+package com.regnosys.rosetta.generator.emof2013;
 
 import static com.regnosys.rosetta.generators.test.TestHelper.toStringContents;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -23,19 +23,19 @@ import java.io.File ;
 import java.io.FileWriter ;
 import java.nio.charset.Charset ;
 
-class EmofCodeGeneratorTest {
+class Emof2013CodeGeneratorTest {
 //    private EmofModelGenerator codeGenerator;
 
     @Test
     void simpleClass() throws Exception {
-        TestHelper<EmofModelGenerator> helper = new TestHelper<>(new EmofModelGenerator() );
+        TestHelper<Emof2013ModelGenerator> helper = new TestHelper<>(new Emof2013ModelGenerator());
         URL textModel = Resources.getResource("rosetta/sample.rosetta");
         RosettaModel model = helper.parse(textModel);
-        EmofModelGenerator generator = helper.getExternalGenerator();
+        Emof2013ModelGenerator generator = helper.getExternalGenerator();
         Map<String, ? extends CharSequence> files = generator.afterGenerate(Collections.singletonList(model));
         assertGenerated(Resources.getResource("sample/Foo.sample.emof"), files);
 
-        FileWriter file = new FileWriter ( "./Foo.test.emof" ) ;
+        FileWriter file = new FileWriter ( "./Foo.test.emof2013.emof" ) ;
         Map.Entry<String, ? extends CharSequence> entry = files.entrySet().iterator().next() ;
         file.write(entry.getKey());
         file.close();

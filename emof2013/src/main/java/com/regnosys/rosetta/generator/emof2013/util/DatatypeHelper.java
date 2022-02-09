@@ -1,4 +1,4 @@
-package com.regnosys.rosetta.generator.emof.util ;
+package com.regnosys.rosetta.generator.emof2013.util ;
 
 import com.regnosys.rosetta.rosetta.RosettaEnumeration ;
 import com.regnosys.rosetta.rosetta.simple.Data ;
@@ -47,7 +47,7 @@ public class DatatypeHelper {
 
 	public static String generateDatatypes() {
 		StringBuilder sb = new StringBuilder()
-			.append ( XmlHelper.untypedTagBegin ( "nestedPackage" , false ) )
+			.append ( XmlHelper.typedTagBegin ( "packagedElement" , "Package" , false ) )
 			.append ( XmlHelper.addAttribute( "xmi:id" , RosettaDatatypeNamespace ))
 			.append ( XmlHelper.addAttribute( "name" , RosettaDatatypeNamespace))
 			.append ( XmlHelper.closeTag() ) ;
@@ -55,13 +55,13 @@ public class DatatypeHelper {
 		sb.append ( XmlHelper.addComment ( RosettaDatatypeNamespace , "Set of Rosetta Primitive Datatypes used in ISDA-CDM" )) ;
 
 		for ( String thisType : typeList ) {
-			sb.append ( XmlHelper.typedTagBegin ( "ownedType" , "emof:PrimitiveType" , false ) )
+			sb.append ( XmlHelper.typedTagBegin ( "packagedElement" , "PrimitiveType" , false ) )
 				.append( XmlHelper.addAttribute( "xmi:id" , IdentifierGenerator.fromTwoParts ( RosettaDatatypeNamespace , thisType )))
 				.append ( XmlHelper.addAttribute ( "name" , thisType ))
 				.append ( XmlHelper.endTag() ) ;
 		}
 
-		sb.append ( XmlHelper.endBlockTag ( "nestedPackage")) ;
+		sb.append ( XmlHelper.endBlockTag ( "packagedElement")) ;
 		return sb.toString() ;
 	}
 }

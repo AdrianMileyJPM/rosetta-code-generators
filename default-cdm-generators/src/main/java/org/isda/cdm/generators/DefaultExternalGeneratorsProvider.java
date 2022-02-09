@@ -16,6 +16,7 @@ import com.regnosys.rosetta.generator.kotlin.KotlinCodeGenerator;
 import com.regnosys.rosetta.generator.scala.ScalaCodeGenerator;
 import com.regnosys.rosetta.generator.typescript.TypescriptCodeGenerator;
 import com.regnosys.rosetta.generator.emof.EmofModelGenerator ;
+import com.regnosys.rosetta.generator.emof2013.Emof2013ModelGenerator ;
 
 public final class DefaultExternalGeneratorsProvider implements Provider<ExternalGenerators> {
 
@@ -43,6 +44,9 @@ public final class DefaultExternalGeneratorsProvider implements Provider<Externa
 	@Inject
 	private EmofModelGenerator emofGenerator;
 
+	@Inject
+	private Emof2013ModelGenerator emof2013Generator;
+
 	@Override
 	public ExternalGenerators get() {
 		return new DefaultGenerators();
@@ -51,7 +55,7 @@ public final class DefaultExternalGeneratorsProvider implements Provider<Externa
 	private final class DefaultGenerators implements ExternalGenerators {
 
 		private List<ExternalGenerator> gens = Arrays.asList(damlGenerator, scalaGenerator, typescriptGenerator,
-				golangGenerator, csharp8Generator, csharp9Generator, kotlinGenerator, emofGenerator);
+				golangGenerator, csharp8Generator, csharp9Generator, kotlinGenerator, emofGenerator , emof2013Generator);
 
 		@Override
 		public Iterator<ExternalGenerator> iterator() {
