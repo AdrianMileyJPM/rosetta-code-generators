@@ -19,6 +19,7 @@ public class DatatypeHelper {
 		, "zonedDateTime"
 		, "number"
 		, "boolean"
+		, "calculation" // datatype derived from function return value
 		) ;
 
 	public static boolean isPrimitiveType ( String typeName ) {

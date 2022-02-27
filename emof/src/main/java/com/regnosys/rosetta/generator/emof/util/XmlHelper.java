@@ -68,9 +68,11 @@ public class XmlHelper {
     }
 
     public static String convertCommentToXML ( String in ) {
-        return in.replaceAll ( ">" , "&lt" )
-            .replaceAll ( "\"" , "&quot")
-            .replaceAll ( "&" , "&amp") ;
+        return in.replaceAll ( "<" , "&lt;" )
+            .replaceAll ( ">" , "&gt;")
+            .replaceAll ( "\"" , "&quot;")
+            .replaceAll ( "\'" , "&apos;")
+            .replaceAll ( "&" , "&amp;") ;
     }
 
     public static String addComment ( String annotatedElementId , String commentIn ) {
