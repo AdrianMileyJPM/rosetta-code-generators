@@ -17,8 +17,9 @@ import java.util.stream.Stream;
 public class EmofGen {
 
     public static void main(String[] args) throws IOException {
-        if (args.length != 0) {
+        if (args.length != 2) {
             System.out.println("2 args required. <dir-where-rosetta-files-are> <out-put-dir>");
+            System.exit(1);
         }
 
         Path rosettaDir = Path.of(args[0]);
@@ -28,13 +29,15 @@ public class EmofGen {
         TestHelper<EmofModelGenerator> helper = new TestHelper<>(new EmofModelGenerator());
         EmofModelGenerator generator = helper.getExternalGenerator();
         Map<String, ? extends CharSequence> generatedCode = generator.afterGenerate(rosettaModels);
-        generatedCode.forEach((fileName, contents) -> {
-            try {
-                Files.write(outDir.resolve(fileName), contents.toString().getBytes(StandardCharsets.UTF_8));
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        });
+        Files.write(outDir.resolve("cdm-emf.xml"), generatedCode.keySet().iterator().next().getBytes(StandardCharsets.UTF_8));
+
+//        generatedCode.forEach((fileName, contents) -> {
+//            try {
+//                Files.write(outDir.resolve(fileName), contents.toString().getBytes(StandardCharsets.UTF_8));
+//            } catch (IOException e) {
+//                throw new RuntimeException(e);
+//            }
+//        });
         System.out.println("Done");
     }
 
